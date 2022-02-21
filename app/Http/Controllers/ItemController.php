@@ -14,10 +14,12 @@ class ItemController extends Controller
      */
     public function index()
     {
-        // Item::all(); itemsテーブルに保存されているいる商品情報を全て取る
-        $items = Item::all();
-        // 「'items/index'」['items' => $items]というデータを渡す
-        return view('item/index', ['items' => $items]);
+        // // Item::all(); itemsテーブルに保存されているいる商品情報を全て取る
+        // $items = Item::all();
+        // // 「'items/index'」['items' => $items]というデータを渡す
+        // return view('item/index', ['items' => $items]);
+        $items = Item::paginate(15);
+        return view('item/index', compact('items'));
     }
 
     /**
