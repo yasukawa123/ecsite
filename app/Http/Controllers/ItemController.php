@@ -12,14 +12,23 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // // Item::all(); itemsテーブルに保存されているいる商品情報を全て取る
         // $items = Item::all();
         // // 「'items/index'」['items' => $items]というデータを渡す
         // return view('item/index', ['items' => $items]);
-        $items = Item::paginate(15);
-        return view('item/index', compact('items'));
+        // $items = Item::paginate(15);
+        // return view('item/index', compact('items'));
+        // リクエストパラメタにkeywordが入っていたら検索機能を動かす
+        if($request->has('keyword')) {
+            // SQLのlike句でitemsテーブルを検索する
+            $items = Item::where('name', 'like', '%'.$request->get('keyword').'%')->paginate(15);
+        }
+        else{
+            $items = Item::paginate(15);
+        }
+        return view('item/index', ['items' => $items]);
     }
 
     /**
