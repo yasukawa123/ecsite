@@ -8,17 +8,33 @@
         <div class="col-md-4 mb-2">
             <div class="card">
                 <!-- 下記で商品名を取得 -->
-                <div class="card-header">{{ $item->name }}</div>
-                <div clas="card-body">
-                    <!-- 下記で商品の価格を取得 -->
-                    {{ $item->amount }}
+                <div class="card-header">
+                    <a href="/item/{{ $item->id }}">{{ $item->name }}</a>
                 </div>
+                <div class="card-body">
+                    <!-- 下記で商品の価格を取得 -->
+                    {{ $item->amount }}円
+                </div>
+                @auth
+                <form method="POST" action="cartitem" class="form-inline m-1">
+                    {{ csrf_field() }}
+                    <select name="quantity" class="form-control col-md-2 mr-1">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <input type="hidden" name="item_id" value="{{ $item->id }}">
+                    <button type="submit" class="btn btn-primary col-md-6">カートに入れる</button>
+                </form>
+                @endauth
             </div>
         </div>
         @endforeach
     </div>
     <div class="row justify-content-center">
-            {{ $items->appends(['keyword' => Request::get('keyword')])->links() }}
+        {{ $items->appends(['keyword' => Request::get('keyword')])->links() }}
     </div>
 </div>
 @endsection

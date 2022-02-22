@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', 'App\Http\Controllers\ItemController@index');
+Route::get('/item/{item}', 'App\Http\Controllers\ItemController@show');
 
 Auth::routes();
 

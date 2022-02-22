@@ -20,6 +20,7 @@ class ItemController extends Controller
         // return view('item/index', ['items' => $items]);
         // $items = Item::paginate(15);
         // return view('item/index', compact('items'));
+
         // リクエストパラメタにkeywordが入っていたら検索機能を動かす
         if($request->has('keyword')) {
             // SQLのlike句でitemsテーブルを検索する
@@ -71,7 +72,8 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        // 追加記入
+        return view('item/show', ['item' => $item]);
     }
 
     /**
