@@ -61,7 +61,8 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        // 追加記入
+        return view('item/show', ['item' => $item]);
     }
 
     /**
@@ -72,8 +73,7 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        // 追加記入
-        return view('item/show', ['item' => $item]);
+        // 
     }
 
     /**
