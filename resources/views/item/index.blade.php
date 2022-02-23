@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- この部分を追加 -->
+@if(Session::has('flash_message'))
+    <div class="alert alert-success">
+        {{ session('flash_message') }}
+    </div>
+@endif
 <div class="container">
     <div class="row justify-content-left">
         {{-- @foreach ($items as $item)～@endforeachの部分でコントローラから受け取ったitemsから商品情報を一つずつ取り出して表示する --}}

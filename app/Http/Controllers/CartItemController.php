@@ -21,6 +21,7 @@ class CartItemController extends Controller
             ->where('user_id', Auth::id())
             ->join('items', 'items.id','=','cart_items.item_id')
             ->get();
+            
         // 合計金額を出すように設定
         $subtotal = 0;
         foreach($cartitems as $cartitem){

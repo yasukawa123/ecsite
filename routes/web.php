@@ -20,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\ItemController@index');
 Route::get('/item/{item}', 'App\Http\Controllers\ItemController@show');
+Route::post('/cartitem', 'App\Http\Controllers\CartItemController@store');
+Route::get('/cartitem', 'App\Http\Controllers\CartItemController@index');
+Route::delete('/cartitem/{cartItem}', 'App\Http\Controllers\CartItemController@destroy');
+Route::put('/cartitem/{cartItem}', 'App\Http\Controllers\CartItemController@update');
 
 Auth::routes();
 
