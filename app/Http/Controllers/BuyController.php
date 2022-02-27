@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // まずstore()アクションの引数でIlluminate\Http\Requestクラスを$requestという変数として受け取る。
 // これで$requestによりフォームからの入力を受け取る。
 use Illuminate\Support\Facades\Auth; //追加
+use App\Models\CartItem;
 
 class BuyController extends Controller
 {

@@ -25,6 +25,9 @@ Route::get('/cartitem', 'App\Http\Controllers\CartItemController@index');
 Route::delete('/cartitem/{cartItem}', 'App\Http\Controllers\CartItemController@destroy');
 Route::put('/cartitem/{cartItem}', 'App\Http\Controllers\CartItemController@update');
 
+Route::get('/buy', 'App\Http\Controllers\BuyController@index');
+Route::post('/buy', 'App\Http\Controllers\BuyController@store');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
